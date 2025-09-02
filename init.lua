@@ -695,6 +695,7 @@ require('lazy').setup({
         -- clangd = {},
         html = {},
         omnisharp = {}, -- C# autocomplete
+        cssls = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
