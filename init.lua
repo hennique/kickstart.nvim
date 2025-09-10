@@ -295,6 +295,8 @@ require('lazy').setup({
     end,
   },
 
+  'mfussenegger/nvim-jdtls', -- Extension support for eclipse.jdt.ls
+
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -726,7 +728,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {}, -- C and C++ autocomplete
-        -- jdtls = {}, -- Java autocomplete
+        jdtls = {}, -- Java autocomplete
         html = {},
         omnisharp = {}, -- C# autocomplete
         cssls = {},
@@ -1005,7 +1007,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
