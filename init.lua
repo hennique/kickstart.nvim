@@ -649,6 +649,11 @@ require('lazy').setup({
         -- gopls = {},
         pyright = {},
         bashls = {},
+        asm_lsp = { -- The lsp searches for a .git directory to locate the root of your project. Run "git init" if your project is not already a git repository
+          cmd = { 'asm-lsp' },
+          filetypes = { 'asm', 's', 'S', 'vmasm' },
+          root_markers = { '.asm-lsp.toml', '.git' },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
