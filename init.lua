@@ -605,6 +605,7 @@ require('lazy').setup({
               checkThirdParty = false,
               library = {
                 vim.env.VIMRUNTIME,
+                '${3rd}/luv/library',
               },
 
               -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
