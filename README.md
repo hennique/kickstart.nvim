@@ -40,4 +40,3 @@ rm -rf ./nvim-linux-x86_64/
 git clone https://github.com/hennique/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 nvim
 ```
-

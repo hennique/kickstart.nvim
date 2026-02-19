@@ -5,13 +5,14 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = os.getenv 'HOME' .. '/.cache/jdtls/workspace/' .. project_name
 
 local configuration_dir = vim.fn.stdpath 'data' .. '/mason/packages/jdtls/config_linux/'
+local root_dir = vim.fs.root(0, { 'gradlew', 'gradle.properties' })
+
 local jar_file = vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar')
 local lombok_jar = vim.fn.stdpath 'data' .. '/mason/packages/jdtls/lombok.jar'
+local jdtls_bin = vim.fn.stdpath 'data' .. '/mason/packages/jdtls/bin/jdtls'
 
 local status, jdtls = pcall(require, 'jdtls')
-if not status then
-  return
-end
+if not status then return end
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 
 -- See `:help vim.lsp.start` for an overview of the supported `config` options.
@@ -20,7 +21,7 @@ local config = {
 
   -- `cmd` defines the executable to launch eclipse.jdt.ls.
   cmd = {
-    '/usr/lib/jvm/jdk-21.0.8-oracle-x64/bin/java',
+    jdtls_bin,
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -48,12 +49,8 @@ local config = {
     },
   },
 
-  init_options = {
-    bundles = {},
-  },
-
   -- `root_dir` must point to the root of your project.
   -- See `:help vim.fs.root`
-  root_dir = vim.fs.root(0, { 'gradlew', '.git', 'mvnw', 'build.gradle', 'pom.xml' }),
+  root_dir = root_dir,
 }
 require('jdtls').start_or_attach(config)
