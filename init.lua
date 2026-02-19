@@ -255,6 +255,11 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
+
+      keys = {
+        scroll_down = '<c-n>',
+        scroll_up = '<c-p>',
+      },
     },
   },
 
