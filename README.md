@@ -15,6 +15,9 @@ I'll only provide information for how to install kickstart on OSs and distros th
 sudo apt update
 sudo apt install make gcc ripgrep unzip git xclip fonts-noto-color-emoji fd-find curl tar
 curl https://sh.rustup.rs -sSf | sh # for cargo package manager, just go with the default installation (press enter or type 1)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \. "$HOME/.nvm/nvm.sh" # Node Version Manager
+nvm install node
+ln -s $HOME/.nvm/versions/node/*/bin/node $HOME/.local/bin/node && ln -s $HOME/.nvm/versions/node/*/bin/npm $HOME/.local/bin/npm
 
 # Install nerd font
 curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/0xProto.zip
