@@ -582,6 +582,7 @@ require('lazy').setup({
         'tree-sitter-cli',
         'jdtls', -- Java autocomplete
         'prettier', -- Code formatter
+        'stylelint', -- CSS linter
         -- You can add other tools here that you want Mason to install
       })
 
@@ -885,7 +886,7 @@ require('lazy').setup({
   --
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
