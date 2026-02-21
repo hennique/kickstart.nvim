@@ -581,6 +581,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'tree-sitter-cli',
         'jdtls', -- Java autocomplete
+        'prettier', -- Code formatter
         -- You can add other tools here that you want Mason to install
       })
 
@@ -662,6 +663,19 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      },
+      formatters = {
+        prettier = {
+          command = 'prettier',
+
+          inherit = true,
+
+          prepend_args = {
+            '--config-precedence prefer-file',
+            '--tab-width 4',
+            '--use-tabs true',
+          },
+        },
       },
     },
   },
