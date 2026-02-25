@@ -1,23 +1,43 @@
-local current_filepath = vim.api.nvim_buf_get_name(0)
-local current_path = vim.fn.fnamemodify(current_filepath, ':p:h')
-local stylelint_config_file = string.format('%s/stylelint.config.mjs', current_path)
+local stylelint_path = vim.fn.stdpath 'data' .. '/mason/packages/stylelint'
+local stylelint_bin = vim.fn.stdpath 'data' .. '/mason/bin/stylelint'
+local stylelint_config = stylelint_path .. '/stylelint.config.mjs'
 
-if vim.fn.filereadable(stylelint_config_file) == 0 then
-  local response = vim.fn.input "Stylelint's configuration not detected, install it? (y/N): "
-  vim.cmd 'stopinsert'
-  if response == 'n' or response == 'N' or response == '' then
-    vim.api.nvim_buf_set_var(0, 'enable_linter', false)
-    return
-  end
-  vim.cmd.terminal { args = { 'touch', stylelint_config_file } }
+if vim.fn.filereadable(stylelint_config) == 0 then
   vim.cmd.terminal {
     args = {
+      'cd',
+      stylelint_path,
+      '&&',
+      'npm',
+      'install',
+      'create-stylelint',
+      '&&',
       'echo',
-      "\"/** @type {import('stylelint').Config} */\nexport default {\nextends: ['stylelint-config-standard']\n};\"",
-      '>',
-      stylelint_config_file,
+      'y',
+      '|',
+      'npm',
+      'create',
+      'stylelint@latest',
     },
   }
-  vim.cmd.terminal { args = { 'npm', 'add', '--prefix', current_path, '-D', 'stylelint', 'stylelint-config-standard' } }
-  vim.cmd 'e!'
+  vim.api.nvim_create_autocmd('BufEnter', {
+    once = true,
+    group = vim.api.nvim_create_augroup('css-install', { clear = true }),
+    pattern = '*.css',
+    command = 'e!',
+  })
 end
+
+require('ale').setup.buffer {
+  css_stylelint_use_global = 1,
+  css_stylelint_executable = stylelint_bin,
+  css_stylelint_options = '--config ' .. stylelint_config,
+  fix_on_save = 1,
+
+  linters = {
+    css = { 'stylelint' },
+  },
+  fixers = {
+    css = { 'trim_whitespace', 'remove_trailing_lines' },
+  },
+}

@@ -1,6 +1,3 @@
--- Set buffer variables
-vim.api.nvim_buf_set_var(0, 'enable_linter', true)
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -158,6 +155,16 @@ vim.api.nvim_create_autocmd('TermOpen', {
   command = 'startinsert | set winfixheight',
 })
 
+vim.api.nvim_create_autocmd('TermClose', {
+  group = vim.api.nvim_create_augroup('terminal-close-on-finish', { clear = true }),
+  pattern = '*',
+  callback = function()
+    vim.schedule(function()
+      if vim.bo.buftype == 'terminal' and vim.v.shell_error == 0 then vim.cmd('bdelete! ' .. vim.fn.expand '<abuf>') end
+    end)
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -200,6 +207,15 @@ require('lazy').setup({
   },
 
   'mfussenegger/nvim-jdtls', -- Extension support for eclipse.jdt.ls (java)
+
+  {
+    'dense-analysis/ale',
+    config = function()
+      require('ale').setup {
+        linters_explicit = 1,
+      }
+    end,
+  },
 
   -- Alternatively, use `config = function() ... end` for full control over the configuration.
   -- If you prefer to call `setup` explicitly, use:
@@ -896,7 +912,7 @@ require('lazy').setup({
   --
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
+  -- require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommended keymaps
