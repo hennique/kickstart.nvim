@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Create a report to help improvement of this configuration
 title: ''
 labels: ''
 assignees: ''
@@ -10,7 +10,7 @@ assignees: ''
 <!-- Any bug report not following this template will be immediately closed. Thanks -->
 
 ## Before Reporting an Issue
-- I have read the kickstart.nvim README.md.
+- I have followed the installation steps correctly.
 - I have read the appropriate plugin's documentation.
 - I have searched that this issue has not been reported before.
 
