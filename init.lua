@@ -573,9 +573,10 @@ require('lazy').setup({
         html = {},
         omnisharp = {}, -- C# autocomplete
         cssls = {},
-        -- gopls = {},
         pyright = {},
         bashls = {},
+        ts_ls = {}, -- Javascript/Typescript autocomplete
+
         asm_lsp = { -- The lsp searches for a .git directory to locate the root of your project. Run "git init" if your project is not already a git repository
           cmd = { 'asm-lsp' },
           filetypes = { 'asm', 's', 'S', 'vmasm', 'nasm' },
@@ -585,13 +586,6 @@ require('lazy').setup({
             if vim.fn.filereadable './.asm-lsp.toml' == 0 then vim.cmd.terminal { args = { asm_bin, '"gen-config"' } } end
           end,
         },
-        -- rust_analyzer = {},
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
