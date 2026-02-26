@@ -1,7 +1,7 @@
 local stylelint_path = vim.fn.stdpath 'data' .. '/mason/packages/stylelint'
 local stylelint_bin = vim.fn.stdpath 'data' .. '/mason/bin/stylelint'
 local stylelint_config = stylelint_path .. '/stylelint.config.mjs'
-local root_dir = vim.fs.root(0, 'stylelint.config.mjs')
+local root_dir = vim.fs.root(0, { 'stylelint.config.mjs', 'stylelint.config.cjs', 'stylelint.config.js' })
 
 if vim.fn.filereadable(stylelint_config) == 0 then
   vim.cmd.terminal {
@@ -28,7 +28,7 @@ if vim.fn.filereadable(stylelint_config) == 0 then
   })
 end
 
-if root_dir ~= nil then stylelint_config = root_dir .. '/stylelint.config.mjs' end
+if root_dir ~= nil then stylelint_config = vim.fn.glob(root_dir .. '/stylelint.config.*js') end
 
 require('ale').setup.buffer {
   css_stylelint_use_global = 1,
