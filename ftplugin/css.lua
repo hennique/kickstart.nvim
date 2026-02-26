@@ -28,16 +28,18 @@ if vim.fn.filereadable(linter_config) == 0 then
   })
 end
 
+-- If you want to temporaly use another linter that is in your project folder,
+-- just change "stylelint.config.*js" to the configuration file of that linter
 if root_dir ~= nil then linter_config = vim.fn.glob(root_dir .. '/stylelint.config.*js') end
 
 require('ale').setup.buffer {
   css_stylelint_use_global = 1,
-  css_stylelint_executable = linter_bin,
+  css_stylelint_executable = linter_bin, -- Also replace linter_bin with the path to your linter's executable
   css_stylelint_options = '--config ' .. linter_config,
   fix_on_save = 1,
 
   linters = {
-    css = { 'stylelint' },
+    css = { 'stylelint' }, -- Finally, add your linter here
   },
   fixers = {
     css = { 'trim_whitespace', 'remove_trailing_lines' },
