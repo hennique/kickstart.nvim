@@ -603,6 +603,7 @@ require('lazy').setup({
         'jdtls', -- Java autocomplete
         'prettier', -- Code formatter
         'stylelint', -- CSS linter
+        'eslint_d', -- Javascript/Typescript linter
         -- You can add other tools here that you want Mason to install
       })
 
@@ -883,6 +884,7 @@ require('lazy').setup({
         'desktop',
         'css',
         'cpp',
+        'typescript',
       }
       require('nvim-treesitter').install(filetypes)
       vim.api.nvim_create_autocmd('FileType', {

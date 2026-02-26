@@ -1,5 +1,6 @@
 local linter_path = vim.fn.stdpath 'data' .. '/mason/packages/stylelint'
 local linter_bin = vim.fn.stdpath 'data' .. '/mason/bin/stylelint'
+local linter_config_preset = vim.fn.stdpath 'config' .. '/presets/linter/stylelint.txt'
 local linter_config = linter_path .. '/stylelint.config.mjs'
 local root_dir = vim.fs.root(0, { 'stylelint.config.mjs', 'stylelint.config.cjs', 'stylelint.config.js' })
 
@@ -9,22 +10,24 @@ if vim.fn.filereadable(linter_config) == 0 then
       'cd',
       linter_path,
       '&&',
-      'npm install create-stylelint',
+      'npm add -D stylelint stylelint-config-standard',
       '&&',
-      'echo y',
-      '|',
-      'npm create stylelint@latest',
+      'touch',
+      linter_config,
       '&&',
-      "sed -i 's/};//' ./stylelint.config.mjs",
-      '&&',
-      'echo \',"rules": {\n\n}\n};\' >> ./stylelint.config.mjs',
+      'cat',
+      linter_config_preset,
+      '>',
+      linter_config,
     },
   }
   vim.api.nvim_create_autocmd('BufEnter', {
     once = true,
-    group = vim.api.nvim_create_augroup('css-install', { clear = true }),
+    group = vim.api.nvim_create_augroup('linter-install', { clear = true }),
     pattern = '*.css',
-    command = 'e!',
+    callback = function()
+      if vim.bo.buftype == '' then vim.cmd 'e!' end
+    end,
   })
 end
 
