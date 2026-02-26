@@ -28,7 +28,7 @@ if vim.fn.filereadable(linter_config) == 0 then
   })
 end
 
--- If you want to temporaly use another linter that is in your project folder,
+-- If you want to temporarily use another linter that is in your project folder,
 -- just change "stylelint.config.*js" to the configuration file of that linter
 if root_dir ~= nil then linter_config = vim.fn.glob(root_dir .. '/stylelint.config.*js') end
 
