@@ -588,6 +588,7 @@ require('lazy').setup({
         pyright = {},
         bashls = {},
         ts_ls = {}, -- Javascript/Typescript autocomplete
+        jsonls = {},
 
         asm_lsp = { -- The lsp searches for a .git directory to locate the root of your project. Run "git init" if your project is not already a git repository
           cmd = { 'asm-lsp' },
