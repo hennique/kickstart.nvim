@@ -36,5 +36,5 @@ if root_dir ~= nil then linter_config = vim.fn.glob(root_dir .. '/eslint.config.
 require('ale').setup.buffer {
   javascript_eslint_use_global = 1,
   javascript_eslint_executable = linter_bin,
-  javascript_eslint_options = '--config ' .. linter_config,
+  javascript_eslint_options = '--flag unstable_native_nodejs_ts_config --config ' .. linter_config,
 }
