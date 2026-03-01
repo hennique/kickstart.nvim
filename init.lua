@@ -213,6 +213,18 @@ require('lazy').setup({
     config = function()
       require('ale').setup {
         linters_explicit = 1,
+        linters = {
+          javascript = { 'eslint' },
+          typescript = { 'eslint' },
+          css = { 'stylelint' },
+        },
+        fixers = {
+          javascript = { 'remove_trailing_lines', 'trim_whitespace' },
+          typescript = { 'remove_trailing_lines', 'trim_whitespace' },
+          css = { 'remove_trailing_lines', 'trim_whitespace' },
+        },
+
+        fix_on_save = 1,
       }
     end,
   },

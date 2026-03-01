@@ -10,7 +10,7 @@ if vim.fn.filereadable(linter_config) == 0 then
       'cd',
       linter_path,
       '&&',
-      'npm install --save-dev eslint@latest @eslint/js@latest',
+      'npm install --save-dev --force eslint@latest @eslint/js@latest',
       '&&',
       'touch',
       linter_config,
@@ -42,13 +42,4 @@ require('ale').setup.buffer {
   javascript_eslint_use_global = 1,
   javascript_eslint_executable = linter_bin,
   javascript_eslint_options = '--config ' .. linter_config,
-
-  fix_on_save = 1,
-
-  linters = {
-    javascript = { 'eslint' }, -- Finally, add your linter here
-  },
-  fixers = {
-    javascript = { 'trim_whitespace', 'remove_trailing_lines' },
-  },
 }

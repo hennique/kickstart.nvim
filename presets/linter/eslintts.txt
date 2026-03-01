@@ -1,17 +1,8 @@
-import { defineConfig } from "eslint/config";
-import js from "@eslint/js";
+import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
 
-export default defineConfig([
-	{
-		files: ["**/*.ts", "**/*.cts", "**/*.mts"],
-		plugins: {
-			js,
-		},
-		extends: ["js/recommended"],
-		rules: {
-			"no-unused-vars": "warn",
-			"no-undef": "warn",
-		},
-	},
-]);
-
+export default defineConfig(
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+);
