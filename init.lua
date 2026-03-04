@@ -589,6 +589,7 @@ require('lazy').setup({
         bashls = {},
         ts_ls = {}, -- Javascript/Typescript autocomplete
         jsonls = {},
+        lemminx = {}, -- XML autocomplete
 
         asm_lsp = { -- The lsp searches for a .git directory to locate the root of your project. Run "git init" if your project is not already a git repository
           cmd = { 'asm-lsp' },
@@ -898,6 +899,7 @@ require('lazy').setup({
         'css',
         'cpp',
         'typescript',
+        'xml',
       }
       require('nvim-treesitter').install(filetypes)
       vim.api.nvim_create_autocmd('FileType', {
