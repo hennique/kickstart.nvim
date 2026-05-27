@@ -11,7 +11,7 @@ I'll only provide information for how to install kickstart on OSs and distros th
 ```sh
 # Install/update dependencies/packages needed
 sudo apt update
-sudo apt install make gcc ripgrep unzip git xclip fonts-noto-color-emoji fd-find curl tar
+sudo apt install make gcc ripgrep unzip git xclip fonts-noto-color-emoji fd-find curl tar luarocks
 curl https://sh.rustup.rs -sSf | sh # for cargo package manager, just go with the default installation (press enter or type 1)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \. "$HOME/.nvm/nvm.sh" # Node Version Manager
 nvm install node
