@@ -28,13 +28,13 @@ sudo fc-cache -f -v
 # Install/update Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 tar xzvf nvim-linux-x86_64.tar.gz
-rm -rf $HOME/.local/lib/nvim/ $HOME/.local/share/nvim/runtime/
+rm -rf $HOME/.local/lib/nvim/ $HOME/.local/share/nvim/
 mv ./nvim-linux-x86_64/bin/nvim $HOME/.local/bin/
 mv ./nvim-linux-x86_64/lib/nvim/ $HOME/.local/lib/
 mv ./nvim-linux-x86_64/share/applications/nvim.desktop $HOME/.local/share/applications/
 mv ./nvim-linux-x86_64/share/icons/hicolor/128x128/apps/nvim.png $HOME/.local/share/icons/hicolor/128x128/apps/
 mv ./nvim-linux-x86_64/share/man/man1/nvim.1 $HOME/.local/share/man/man1/
-mkdir -p $HOME/.local/share/nvim/ && mv ./nvim-linux-x86_64/share/nvim/runtime/ $HOME/.local/share/nvim/
+mv ./nvim-linux-x86_64/share/nvim/ $HOME/.local/share/
 rm -rf ./nvim-linux-x86_64/
 
 # Install kickstart and open Neovim
