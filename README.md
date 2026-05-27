@@ -8,8 +8,6 @@ I'll only provide information for how to install kickstart on OSs and distros th
 
 ### Linux
 
-#### Ubuntu/Debian
-
 ```sh
 # Install/update dependencies/packages needed
 sudo apt update
