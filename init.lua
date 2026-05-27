@@ -320,7 +320,7 @@ do
     keys = {
       scroll_up = '<c-p>',
       scroll_down = '<c-n>',
-    }
+    },
   }
 
   -- [[ Colorscheme ]]
@@ -796,7 +796,7 @@ do
           '--use-tabs true',
         },
       },
-    }
+    },
   }
 
   vim.keymap.set({ 'n', 'v' }, '<leader>f', function() require('conform').format { async = true } end, { desc = '[F]ormat buffer' })
@@ -907,7 +907,33 @@ do
   vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
 
   -- Ensure basic parsers are installed
-  local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'java', 'javascript', 'asm', 'nasm', 'regex', 'python', 'json', 'gitignore', 'editorconfig', 'desktop', 'css', 'cpp', 'typescript', 'xml' }
+  local parsers = {
+    'bash',
+    'c',
+    'diff',
+    'html',
+    'lua',
+    'luadoc',
+    'markdown',
+    'markdown_inline',
+    'query',
+    'vim',
+    'vimdoc',
+    'java',
+    'javascript',
+    'asm',
+    'nasm',
+    'regex',
+    'python',
+    'json',
+    'gitignore',
+    'editorconfig',
+    'desktop',
+    'css',
+    'cpp',
+    'typescript',
+    'xml',
+  }
   require('nvim-treesitter').install(parsers)
 
   ---@param buf integer
