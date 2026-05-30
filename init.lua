@@ -662,6 +662,7 @@ do
     ts_ls = {}, -- Javascript/Typescript autocomplete
     jsonls = {},
     lemminx = {}, -- XML autocomplete
+    yamlls = {},
 
     asm_lsp = { -- The lsp searches for a .git directory to locate the root of your project. Run "git init" if your project is not already a git repository
       cmd = { 'asm-lsp' },
@@ -741,6 +742,7 @@ do
     'prettier', -- Code formatter
     'stylelint', -- CSS linter
     'eslint_d', -- Javascript/Typescript linter
+    'actionlint', -- Github actions workflow files linter
     -- You can add other tools here that you want Mason to install
   })
 
@@ -766,6 +768,7 @@ do
       -- You can specify filetypes to autoformat on save here:
       local enabled_filetypes = {
         lua = true,
+        yaml = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -779,6 +782,7 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       lua = { 'stylua' },
+      yaml = { 'prettier' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
@@ -934,6 +938,7 @@ do
     'cpp',
     'typescript',
     'xml',
+    'yaml',
   }
   require('nvim-treesitter').install(parsers)
 
@@ -998,7 +1003,7 @@ do
   --
   require 'kickstart.plugins.debug'
   require 'kickstart.plugins.indent_line'
-  -- require 'kickstart.plugins.lint'
+  require 'kickstart.plugins.lint'
   require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
   require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
