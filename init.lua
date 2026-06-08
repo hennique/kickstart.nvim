@@ -580,6 +580,9 @@ do
     fix_on_save = 1,
   }
 
+  vim.pack.add { gh 'hennique/twee.nvim' } -- Twee support
+  require('twee').setup {}
+
   --  This function gets run when an LSP attaches to a particular buffer.
   --    That is to say, every time a new file is opened that is associated with
   --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
