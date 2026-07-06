@@ -576,6 +576,7 @@ do
       javascript = { 'remove_trailing_lines', 'trim_whitespace' },
       typescript = { 'remove_trailing_lines', 'trim_whitespace' },
       css = { 'remove_trailing_lines', 'trim_whitespace' },
+      python = { 'remove_trailing_lines', 'trim_whitespace' },
     },
     fix_on_save = 1,
   }
