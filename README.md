@@ -28,6 +28,7 @@ sudo fc-cache -f -v
 # Install/update Neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 tar xzvf nvim-linux-x86_64.tar.gz
+rm -f nvim-linux-x86_64.tar.gz
 rm -rf $HOME/.local/lib/nvim/ $HOME/.local/share/nvim/
 mv ./nvim-linux-x86_64/bin/nvim $HOME/.local/bin/
 mv ./nvim-linux-x86_64/lib/nvim/ $HOME/.local/lib/
