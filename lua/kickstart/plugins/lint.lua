@@ -6,7 +6,7 @@ local lint = require 'lint'
 
 lint.linters_by_ft = lint.linters_by_ft or {}
 
-if string.find(vim.api.nvim_buf_get_name(0), '.github') then lint.linters_by_ft['yaml'] = { 'actionlint' } end
+if string.find(vim.api.nvim_buf_get_name(0), '.github/workflows') then lint.linters_by_ft['yaml'] = { 'actionlint' } end
 
 lint.linters_by_ft['clojure'] = nil
 lint.linters_by_ft['dockerfile'] = nil
