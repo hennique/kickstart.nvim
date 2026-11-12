@@ -609,27 +609,6 @@ do
   vim.pack.add { gh 'j-hui/fidget.nvim' }
   require('fidget').setup {}
 
-  vim.pack.add { gh 'mfussenegger/nvim-jdtls' } -- Extension support for eclipse.jdt.ls (java)
-
-  vim.pack.add { gh 'dense-analysis/ale' }
-  require('ale').setup {
-    linters_explicit = 1,
-    linters = {
-      javascript = { 'eslint' },
-      typescript = { 'eslint' },
-      css = { 'stylelint' },
-    },
-    fixers = {
-      javascript = { 'remove_trailing_lines', 'trim_whitespace' },
-      typescript = { 'remove_trailing_lines', 'trim_whitespace' },
-      css = { 'remove_trailing_lines', 'trim_whitespace' },
-      python = { 'remove_trailing_lines', 'trim_whitespace' },
-    },
-    fix_on_save = 1,
-  }
-
-  vim.pack.add { gh 'hennique/twee.nvim' } -- Twee support
-
   --  This function gets run when an LSP attaches to a particular buffer.
   --    That is to say, every time a new file is opened that is associated with
   --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -953,15 +932,6 @@ do
   --
   --  See `:help nvim-treesitter-intro`
 
-  vim.pack.add { gh 'windwp/nvim-ts-autotag' }
-  require('nvim-ts-autotag').setup {
-    opts = {
-      enable_close = true, -- Auto close tags>
-      enable_rename = true, -- Auto rename pairs of tags
-      enable_close_on_slash = false, -- Auto close on trailing </
-    },
-  }
-
   -- NOTE: You can also specify a branch or a specific commit
   vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
 
@@ -1078,6 +1048,41 @@ do
   -- require 'custom.plugins.colorscheme'
   -- require 'custom.plugins.ui'
   -- require 'custom.plugins.git'
+end
+
+-- ============================================================
+-- SECTION 11: ADDITIONAL PLUGINS
+-- ============================================================
+do
+  vim.pack.add { gh 'mfussenegger/nvim-jdtls' } -- Extension support for eclipse.jdt.ls (java)
+
+  vim.pack.add { gh 'dense-analysis/ale' }
+  require('ale').setup {
+    linters_explicit = 1,
+    linters = {
+      javascript = { 'eslint' },
+      typescript = { 'eslint' },
+      css = { 'stylelint' },
+    },
+    fixers = {
+      javascript = { 'remove_trailing_lines', 'trim_whitespace' },
+      typescript = { 'remove_trailing_lines', 'trim_whitespace' },
+      css = { 'remove_trailing_lines', 'trim_whitespace' },
+      python = { 'remove_trailing_lines', 'trim_whitespace' },
+    },
+    fix_on_save = 1,
+  }
+
+  vim.pack.add { gh 'windwp/nvim-ts-autotag' }
+  require('nvim-ts-autotag').setup {
+    opts = {
+      enable_close = true, -- Auto close tags>
+      enable_rename = true, -- Auto rename pairs of tags
+      enable_close_on_slash = false, -- Auto close on trailing </
+    },
+  }
+
+  vim.pack.add { gh 'hennique/twee.nvim' } -- Twee support
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
